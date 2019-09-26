@@ -1,0 +1,8 @@
+{
+  "name": "graphql-server-tutorial",
+  "version": "1.0.0",
+  "description": "GraphQL Server Tutorial created by duylamasd",
+  "main": "index.js",
+  "author": "duylamasd",
+  "license": "MIT"
+}
