@@ -2,7 +2,23 @@
   "name": "graphql-server-tutorial",
   "version": "1.0.0",
   "description": "GraphQL Server Tutorial created by duylamasd",
-  "main": "index.js",
+  "main": "server.js",
   "author": "duylamasd",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js",
+    "develop": "nodemon server.js"
+  },
+  "dependencies": {
+    "apollo-server": "^2.9.4",
+    "apollo-server-express": "^2.9.4",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "mongoose": "^5.7.1",
+    "saslprep": "^1.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.2"
+  }
 }
