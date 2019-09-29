@@ -6,7 +6,7 @@ dotenv.config();
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 const { connectDatabase } = require("./config/database");
-const schema = require("./schemas");
+const schema = require("./schema");
 const models = require("./models");
 
 const app = express();
