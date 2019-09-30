@@ -12,7 +12,9 @@ const models = require("./models");
 const app = express();
 const server = new ApolloServer({
   schema,
-  context: { models },
+  context: ({ req, res, connection }) => {
+    return { models, req };
+  },
   introspection: true,
   playground: true
 });

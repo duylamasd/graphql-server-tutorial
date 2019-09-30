@@ -9,7 +9,12 @@ const COLLECTION_NAME = "Users";
 
 const User = new Schema(
   {
-    email: String,
+    email: {
+      type: String,
+      index: {
+        unique: true
+      }
+    },
     password: String,
     firstName: String,
     lastName: String,
