@@ -1,7 +1,9 @@
 "use strict";
 
 const { gql } = require("apollo-server-express");
+
 const UserTypeDef = require("./user");
+const Directives = require("./directives");
 
 const Query = gql`
   type Query {
@@ -12,4 +14,4 @@ const Query = gql`
   }
 `;
 
-module.exports = [UserTypeDef, Query];
+module.exports = [Directives, UserTypeDef, Query];

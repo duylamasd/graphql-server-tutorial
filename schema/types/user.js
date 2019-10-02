@@ -17,7 +17,7 @@ const UserTypeDef = gql`
   }
 
   extend type Query {
-    users: [User]
+    users: [User] @auth(role: "ADMIN")
   }
 
   extend type Mutation {

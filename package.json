@@ -6,8 +6,8 @@
   "author": "duylamasd",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
-    "develop": "nodemon server.js"
+    "start": "nodemon server.js",
+    "run_prod": "node server.js"
   },
   "dependencies": {
     "apollo-server": "^2.9.4",

@@ -5,6 +5,7 @@ dotenv.config();
 
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
+
 const { connectDatabase } = require("./config/database");
 const schema = require("./schema");
 const models = require("./models");
@@ -13,7 +14,8 @@ const app = express();
 const server = new ApolloServer({
   schema,
   context: ({ req, res, connection }) => {
-    return { models, req };
+    const token = req.headers.authorization;
+    return { models, token };
   },
   introspection: true,
   playground: true

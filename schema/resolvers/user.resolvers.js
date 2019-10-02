@@ -6,7 +6,8 @@ const { JWT_SECRET, JWT_EXPIRY_TIME } = require("../../config/environment");
 
 const UserResolvers = {
   Query: {
-    users: async (root, args, { models: { User } }) => {
+    users: async (root, args, { models: { User }, user }) => {
+      console.log(user);
       return User.find();
     }
   },
