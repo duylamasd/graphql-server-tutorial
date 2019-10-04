@@ -14,12 +14,16 @@ const UserResolvers = {
   Mutation: {
     signUp: async (
       root,
-      { email, password, firstName, lastName, address },
+      { input: { email, password, firstName, lastName, address } },
       { models: { User } }
     ) => {
       return User.create({ email, password, firstName, lastName, address });
     },
-    login: async (root, { email, password }, { models: { User } }) => {
+    login: async (
+      root,
+      { input: { email, password } },
+      { models: { User } }
+    ) => {
       const user = await User.findOne({ email });
       if (!user) {
         throw new AuthenticationError("Invalid credentials");

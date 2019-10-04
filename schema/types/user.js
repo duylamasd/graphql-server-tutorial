@@ -20,15 +20,22 @@ const UserTypeDef = gql`
     users: [User] @auth(role: "ADMIN")
   }
 
+  input SignUpInput {
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    address: String!
+  }
+
+  input LoginInput {
+    email: String!
+    password: String!
+  }
+
   extend type Mutation {
-    signUp(
-      email: String!
-      password: String!
-      firstName: String!
-      lastName: String!
-      address: String!
-    ): User
-    login(email: String!, password: String!): Token
+    signUp(input: SignUpInput): User
+    login(input: LoginInput): Token
   }
 `;
 
