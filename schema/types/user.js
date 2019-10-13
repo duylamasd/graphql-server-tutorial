@@ -17,7 +17,7 @@ const UserTypeDef = gql`
   }
 
   extend type Query {
-    users: [User] @auth(role: "ADMIN")
+    users: [User]
   }
 
   input SignUpInput {
@@ -36,6 +36,10 @@ const UserTypeDef = gql`
   extend type Mutation {
     signUp(input: SignUpInput): User
     login(input: LoginInput): Token
+  }
+
+  extend type Subscription {
+    lastUser: Token
   }
 `;
 

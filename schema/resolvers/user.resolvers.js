@@ -3,11 +3,13 @@
 const { sign } = require("jsonwebtoken");
 const { AuthenticationError } = require("apollo-server-express");
 const { JWT_SECRET, JWT_EXPIRY_TIME } = require("../../config/environment");
+const pubsub = require("../../config/pubsub");
+
+const ISSUE_TOKEN = "ISSUE_TOKEN";
 
 const UserResolvers = {
   Query: {
     users: async (root, args, { models: { User }, user }) => {
-      console.log(user);
       return User.find();
     }
   },
@@ -40,10 +42,17 @@ const UserResolvers = {
         expiresIn: JWT_EXPIRY_TIME
       });
 
+      pubsub.publish(ISSUE_TOKEN, { lastUser: { token, user } });
+
       return {
         token,
         user
       };
+    }
+  },
+  Subscription: {
+    lastUser: {
+      subscribe: () => pubsub.asyncIterator([ISSUE_TOKEN])
     }
   }
 };

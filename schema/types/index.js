@@ -12,6 +12,10 @@ const Query = gql`
   type Mutation {
     null: Boolean
   }
+
+  type Subscription {
+    null: Boolean
+  }
 `;
 
 module.exports = [Directives, UserTypeDef, Query];

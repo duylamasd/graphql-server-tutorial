@@ -3,6 +3,7 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
+const http = require("http");
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
 
@@ -14,17 +15,23 @@ const app = express();
 const server = new ApolloServer({
   schema,
   context: ({ req, res, connection }) => {
-    const token = req.headers.authorization;
+    let token = "";
+    if (req) {
+      token = req.headers.authorization;
+    }
     return { models, token };
   },
   introspection: true,
   playground: true
 });
-server.applyMiddleware({ app });
+server.applyMiddleware({ app, path: "/graphql" });
+
+const httpServer = http.createServer(app);
+server.installSubscriptionHandlers(httpServer);
 
 connectDatabase()
   .then(() => {
-    app.listen(3500, () => {
+    httpServer.listen(3500, () => {
       console.log("App started");
     });
   })
