@@ -19,7 +19,7 @@
     "graphql-resolvers": "^0.3.3",
     "graphql-tools": "^4.0.5",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "saslprep": "^1.0.3",
     "subscriptions-transport-ws": "^0.9.16"
   },
